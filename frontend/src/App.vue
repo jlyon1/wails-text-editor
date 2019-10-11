@@ -1,5 +1,6 @@
 <template>
   <div ref="cont" id="app">
+    <input type="text" v-model="filename"/>
     <button @click="save">
       SAVE
     </button>
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     save(){
-      window.backend.Save(this.content)
+      window.backend.Save(this.filename,this.content)
     },
     editorInit: function () {
         require('brace/ext/language_tools') //language extension prerequsite...
@@ -46,6 +47,7 @@ export default {
   data(){
     return {
       content: '',
+      filename: '',
       selected: 'html',
       options: ['html', 'javascript']
       }
